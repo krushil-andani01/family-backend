@@ -36,3 +36,18 @@ exports.getFamily = async (req, res) => {
     });
   }
 };
+
+exports.delFamily = async (req,res) => {
+  try {
+    
+    const delFamily = await family.findByIdAndDelete(req.params.id);
+
+    console.log(delFamily);
+    
+
+  } catch (error) {
+    res.json({
+      message: error
+    });
+  }
+}
