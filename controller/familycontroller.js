@@ -43,7 +43,7 @@ exports.delFamily = async (req,res) => {
     const delFamily = await family.findByIdAndDelete(req.params.id);
 
     console.log(delFamily);
-    
+    console.log(delFamily);
 
   } catch (error) {
     res.json({
