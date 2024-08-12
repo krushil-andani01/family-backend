@@ -3,23 +3,12 @@ var family = require("../model/family");
 exports.AddFamily = async (req, res) => {
   try {
     const { name, age, contact, relation } = req.body;
-    if ((name = "")) {
+    if (!name || !age || !contact || !relation) {
       res.json({
-        message: "name is required",
+        message: "All value is required",
       });
-    } else if ((contact = "")) {
-      res.json({
-        message: " mobile number is required",
-      });
-    } else if ((age = "")) {
-      res.json({
-        message: " age is required",
-      });
-    } else if ((relation = "")) {
-      res.json({
-        message: " relation is required",
-      });
-    } else {
+    }
+    else {
       const familyData = await family.create(req.body);
       res.json({
         message: "User created successfully",
@@ -32,6 +21,7 @@ exports.AddFamily = async (req, res) => {
     });
   }
 };
+
 
 exports.getFamily = async (req, res) => {
   try {
